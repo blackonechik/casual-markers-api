@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON API</title>
+</head>
+<body>
+  <h1>Пример JSON API</h1>
+  <script>
+    // Обработка запроса на получение JSON
+    fetch('./data.json')
+      .then(response => response.json())
+      .then(data => {
+        console.log('JSON данные:', data);
+        // Выводим данные на страницу (если нужно)
+        document.body.innerHTML += `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+      })
+      .catch(error => {
+        console.error('Ошибка при загрузке JSON:', error);
+      });
+  </script>
+</body>
+</html>
