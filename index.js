@@ -12,7 +12,6 @@ const Globe = new ThreeGlobe()
   .globeImageUrl("//unpkg.com/three-globe/example/img/earth-blue-marble.jpg")
   .bumpImageUrl("//unpkg.com/three-globe/example/img/earth-topology.png");
 
-// Функция для загрузки данных маркеров с API
 async function loadMarkers() {
   try {
     const response = await fetch(
