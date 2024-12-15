@@ -19,7 +19,24 @@ const gData = [
     description: `4 - 15 августа 2024 года`,
     url: `https://beta.rcb.ru/amur-i-kolyma`,
   },
-  {}, // фиктивный объект
+  {
+    lat: (Math.random() - 0.5) * 180,
+    lng: (Math.random() - 0.5) * 360,
+    size: 30,
+    color: "red",
+    title: `Амур и Колыма`,
+    description: `4 - 15 августа 2024 года`,
+    url: `https://beta.rcb.ru/amur-i-kolyma`,
+  },
+  {
+    lat: (Math.random() - 0.5) * 180,
+    lng: (Math.random() - 0.5) * 360,
+    size: 30,
+    color: "red",
+    title: `Амур и Колыма`,
+    description: `4 - 15 августа 2024 года`,
+    url: `https://beta.rcb.ru/amur-i-kolyma`,
+  },
 ];
 
 
