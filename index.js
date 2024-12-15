@@ -105,7 +105,7 @@ scene.add(new THREE.DirectionalLight(0xffffff, 2.6 * Math.PI));
 const camera = new THREE.PerspectiveCamera();
 camera.aspect = container.clientWidth / container.clientHeight;
 camera.updateProjectionMatrix();
-camera.position.z = 350;
+camera.position.z = 320;
 
 const tbControls = new TrackballControls(camera, renderers[0].domElement);
 tbControls.noPan = true; // Отключаем панорамирование
