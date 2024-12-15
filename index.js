@@ -8,13 +8,17 @@ const markerSvg = `<svg viewBox="-4 0 36 36">
 
 const activeTooltips = new Set(); // Множество для отслеживания активных тултипов
 
-const N = 30;
-    const gData = [...Array(N).keys()].map(() => ({
-      lat: (Math.random() - 0.5) * 180,
-      lng: (Math.random() - 0.5) * 360,
-      size: 7 + Math.random() * 30,
-      color: ['red', 'white', 'blue', 'green'][Math.round(Math.random() * 3)]
-    }));
+const gData = [
+  {
+    lat: 37.7749, // широта в диапазоне -90..90
+    lng: -122.4194, // долгота в диапазоне -180..180
+    size: 20, // Уменьшенный размер для теста
+    color: "#FF0000", // Используй HEX-код для надежности
+    title: "Сан-Франциско",
+    description: "20 января - 3 марта 2028",
+    url: "https://example.com/san-francisco"
+  }
+];
 
 
 const Globe = new ThreeGlobe()
