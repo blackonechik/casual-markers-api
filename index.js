@@ -8,11 +8,11 @@ const markerSvg = `<svg viewBox="-4 0 36 36">
 
 const activeTooltips = new Set(); // Множество для отслеживания активных тултипов
 
-const N = 30;
+const N = 1;
 const gData = [...Array(N).keys()].map(() => ({
   lat: (Math.random() - 0.5) * 180,
   lng: (Math.random() - 0.5) * 360,
-  size: 7 + Math.random() * 30,
+  size: 30,
   color: "red",
   title: `Title ${Math.round(Math.random() * 100)}`,
   description: `Description ${Math.round(Math.random() * 100)}`,
