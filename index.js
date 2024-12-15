@@ -27,11 +27,12 @@ const Globe = new ThreeGlobe()
     const el = document.createElement("div");
     el.className = "marker";
     el.innerHTML = markerSvg;
-    console.log("Создан маркер:", el);
+    console.log("Создан маркер:", el); // Добавьте лог
     el.style.color = d.color;
     el.style.width = `${d.size}px`;
     el.style.pointerEvents = "auto";
 
+    // Создаем тултип
     const tooltip = document.createElement("div");
     tooltip.style.position = "absolute";
     tooltip.style.background = "rgba(255, 255, 255, 0.9)";
