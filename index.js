@@ -2,9 +2,9 @@ import { TrackballControls } from "three/addons/controls/TrackballControls.js";
 import { CSS2DRenderer } from "three/addons/renderers/CSS2DRenderer.js";
 
 const markerSvg = `<svg viewBox="-4 0 36 36">
-        <path fill="currentColor" d="M14,0 C21.732,0 28,5.641 28,12.6 C28,23.963 14,36 14,36 C14,36 0,24.064 0,12.6 C0,5.641 6.268,0 14,0 Z"></path>
-        <circle fill="white" cx="14" cy="14" r="7"></circle>
-      </svg>`;
+      <path fill="currentColor" d="M14,0 C21.732,0 28,5.641 28,12.6 C28,23.963 14,36 14,36 C14,36 0,24.064 0,12.6 C0,5.641 6.268,0 14,0 Z"></path>
+      <circle fill="black" cx="14" cy="14" r="7"></circle>
+    </svg>`;
 
 const activeTooltips = new Set(); // Множество для отслеживания активных тултипов
 
@@ -23,65 +23,73 @@ const gData = [
 const Globe = new ThreeGlobe()
   .globeImageUrl("//unpkg.com/three-globe/example/img/earth-blue-marble.jpg")
   .bumpImageUrl("//unpkg.com/three-globe/example/img/earth-topology.png")
-  .htmlElementsData(gData).htmlElement((d) => {
-    const el = document.createElement("div");
-    el.className = "marker";
+  .htmlElementsData(gData)
+  .htmlElement(d => {
+    const el = document.createElement('div');
     el.innerHTML = markerSvg;
-    console.log("Создан маркер:", el); // Добавьте лог
     el.style.color = d.color;
     el.style.width = `${d.size}px`;
-    el.style.pointerEvents = "auto";
-
-    // Создаем тултип
-    const tooltip = document.createElement("div");
-    tooltip.style.position = "absolute";
-    tooltip.style.background = "rgba(255, 255, 255, 0.9)";
-    tooltip.style.border = "1px solid #ccc";
-    tooltip.style.borderRadius = "5px";
-    tooltip.style.padding = "10px";
-    tooltip.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
-    tooltip.style.display = "none"; // Скрываем по умолчанию
-    tooltip.style.zIndex = "10";
-
-    // Добавляем контент тултипа
-    tooltip.innerHTML = `
-            <div class="tooltip-i">
-              <h3>${d.title}</h3>
-              <p>${d.description}</p>
-              <button>Перейти</button>
-            </div>
-          `;
-
-    // Добавляем кнопку перехода
-    const button = tooltip.querySelector("button");
-    button.addEventListener("click", (e) => {
-      e.stopPropagation(); // Предотвращаем всплытие
-      window.open(d.url, "_blank"); // Открываем ссылку в новой вкладке
-    });
-
-    // Добавляем тултип в элемент маркера
-    el.appendChild(tooltip);
-
-    // Обрабатываем событие клика
-    el.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation(); // Останавливаем всплытие событий
-
-      // Закрываем другие активные тултипы
-      activeTooltips.forEach((t) => (t.style.display = "none"));
-      activeTooltips.clear();
-
-      // Показываем тултип
-      tooltip.style.display = "block";
-      tooltip.style.left = `${e.offsetX + 10}px`; // Смещаем тултип относительно курсора
-      tooltip.style.top = `${e.offsetY + 10}px`;
-
-      // Добавляем тултип в активные
-      activeTooltips.add(tooltip);
-    });
-
     return el;
   });
+  // .htmlElement((d) => {
+  //   const el = document.createElement("div");
+  //   el.className = "marker";
+  //   el.innerHTML = markerSvg;
+  //   console.log("Создан маркер:", el); // Добавьте лог
+  //   el.style.color = d.color;
+  //   el.style.width = `${d.size}px`;
+  //   el.style.pointerEvents = "auto";
+
+  //   // Создаем тултип
+  //   const tooltip = document.createElement("div");
+  //   tooltip.style.position = "absolute";
+  //   tooltip.style.background = "rgba(255, 255, 255, 0.9)";
+  //   tooltip.style.border = "1px solid #ccc";
+  //   tooltip.style.borderRadius = "5px";
+  //   tooltip.style.padding = "10px";
+  //   tooltip.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
+  //   tooltip.style.display = "none"; // Скрываем по умолчанию
+  //   tooltip.style.zIndex = "10";
+
+  //   // Добавляем контент тултипа
+  //   tooltip.innerHTML = `
+  //           <div class="tooltip-i">
+  //             <h3>${d.title}</h3>
+  //             <p>${d.description}</p>
+  //             <button>Перейти</button>
+  //           </div>
+  //         `;
+
+  //   // Добавляем кнопку перехода
+  //   const button = tooltip.querySelector("button");
+  //   button.addEventListener("click", (e) => {
+  //     e.stopPropagation(); // Предотвращаем всплытие
+  //     window.open(d.url, "_blank"); // Открываем ссылку в новой вкладке
+  //   });
+
+  //   // Добавляем тултип в элемент маркера
+  //   el.appendChild(tooltip);
+
+  //   // Обрабатываем событие клика
+  //   el.addEventListener("click", (e) => {
+  //     e.preventDefault();
+  //     e.stopPropagation(); // Останавливаем всплытие событий
+
+  //     // Закрываем другие активные тултипы
+  //     activeTooltips.forEach((t) => (t.style.display = "none"));
+  //     activeTooltips.clear();
+
+  //     // Показываем тултип
+  //     tooltip.style.display = "block";
+  //     tooltip.style.left = `${e.offsetX + 10}px`; // Смещаем тултип относительно курсора
+  //     tooltip.style.top = `${e.offsetY + 10}px`;
+
+  //     // Добавляем тултип в активные
+  //     activeTooltips.add(tooltip);
+  //   });
+  //   console.log(el);
+  //   return el;
+  // });
 
 // Скрываем тултипы при клике на карту
 document.addEventListener("click", () => {
