@@ -9,15 +9,19 @@ const markerSvg = `<svg viewBox="-4 0 36 36">
 const activeTooltips = new Set(); // Множество для отслеживания активных тултипов
 
 const N = 1;
-const gData = [...Array(N).keys()].map(() => ({
-  lat: (Math.random() - 0.5) * 180,
-  lng: (Math.random() - 0.5) * 360,
-  size: 30,
-  color: "red",
-  title: `Амур и Колыма`,
-  description: `4 - 15 августа 2024 года`,
-  url: `https://beta.rcb.ru/amur-i-kolyma`,
-}));
+const gData = [
+  {
+    lat: (Math.random() - 0.5) * 180,
+    lng: (Math.random() - 0.5) * 360,
+    size: 30,
+    color: "red",
+    title: `Амур и Колыма`,
+    description: `4 - 15 августа 2024 года`,
+    url: `https://beta.rcb.ru/amur-i-kolyma`,
+  },
+  {}, // фиктивный объект
+];
+
 
 const Globe = new ThreeGlobe()
   .globeImageUrl("//unpkg.com/three-globe/example/img/earth-blue-marble.jpg")
@@ -27,12 +31,11 @@ const Globe = new ThreeGlobe()
     const el = document.createElement("div");
     el.className = "marker";
     el.innerHTML = markerSvg;
-    console.log("Создан маркер:", el); // Добавьте лог
+    console.log("Создан маркер:", el);
     el.style.color = d.color;
     el.style.width = `${d.size}px`;
     el.style.pointerEvents = "auto";
 
-    // Создаем тултип
     const tooltip = document.createElement("div");
     tooltip.style.position = "absolute";
     tooltip.style.background = "rgba(255, 255, 255, 0.9)";
