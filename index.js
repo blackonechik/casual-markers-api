@@ -14,9 +14,9 @@ const gData = [...Array(N).keys()].map(() => ({
   lng: (Math.random() - 0.5) * 360,
   size: 30,
   color: "red",
-  title: `Title ${Math.round(Math.random() * 100)}`,
-  description: `Description ${Math.round(Math.random() * 100)}`,
-  url: `https://example.com/${Math.round(Math.random() * 100)}`,
+  title: `Амур и Колыма`,
+  description: `4 - 15 августа 2024 года`,
+  url: `https://beta.rcb.ru/amur-i-kolyma`,
 }));
 
 const Globe = new ThreeGlobe()
