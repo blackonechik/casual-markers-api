@@ -25,6 +25,7 @@ const Globe = new ThreeGlobe()
   .bumpImageUrl("//unpkg.com/three-globe/example/img/earth-topology.png")
   .htmlElementsData(gData).htmlElement((d) => {
     const el = document.createElement("div");
+    el.className = "marker";
     el.innerHTML = markerSvg;
     el.style.color = d.color;
     el.style.width = `${d.size}px`;
