@@ -2,29 +2,25 @@ import { TrackballControls } from "three/addons/controls/TrackballControls.js";
 import { CSS2DRenderer } from "three/addons/renderers/CSS2DRenderer.js";
 
 const markerSvg = `<svg viewBox="-4 0 36 36">
-      <path fill="currentColor" d="M14,0 C21.732,0 28,5.641 28,12.6 C28,23.963 14,36 14,36 C14,36 0,24.064 0,12.6 C0,5.641 6.268,0 14,0 Z"></path>
-      <circle fill="black" cx="14" cy="14" r="7"></circle>
-    </svg>`;
+        <path fill="currentColor" d="M14,0 C21.732,0 28,5.641 28,12.6 C28,23.963 14,36 14,36 C14,36 0,24.064 0,12.6 C0,5.641 6.268,0 14,0 Z"></path>
+        <circle fill="white" cx="14" cy="14" r="7"></circle>
+      </svg>`;
 
 const activeTooltips = new Set(); // Множество для отслеживания активных тултипов
 
-const gData = [
-  {
-    "lat": 37.7749,
-    "lng": -122.4194,
-    "size": 40,
-    "color": "red",
-    "title": "Сан-Франциско",
-    "description": "20 января - 3 марта 2028",
-    "url": "https://example.com/san-francisco"
-  }
-]
+const N = 30;
+    const gData = [...Array(N).keys()].map(() => ({
+      lat: (Math.random() - 0.5) * 180,
+      lng: (Math.random() - 0.5) * 360,
+      size: 7 + Math.random() * 30,
+      color: ['red', 'white', 'blue', 'green'][Math.round(Math.random() * 3)]
+    }));
+
 
 const Globe = new ThreeGlobe()
   .globeImageUrl("//unpkg.com/three-globe/example/img/earth-blue-marble.jpg")
   .bumpImageUrl("//unpkg.com/three-globe/example/img/earth-topology.png")
-  .htmlElementsData(gData)
-  .htmlElement((d) => {
+  .htmlElementsData(gData).htmlElement((d) => {
     const el = document.createElement("div");
     el.className = "marker";
     el.innerHTML = markerSvg;
@@ -94,12 +90,8 @@ document.addEventListener("click", () => {
 const container = document.getElementById("globeViz");
 const renderers = [new THREE.WebGLRenderer(), new CSS2DRenderer()];
 renderers.forEach((r, idx) => {
-  if (idx > 0) {
-    // overlay additional on top of main renderer
-    r.domElement.style.position = 'absolute';
-    r.domElement.style.top = '0px';
-    r.domElement.style.pointerEvents = 'none';
-  }
+  r.domElement.style.position = "absolute";
+  r.domElement.style.pointerEvents = idx > 0 ? "none" : "auto";
   container.appendChild(r.domElement);
 });
 
