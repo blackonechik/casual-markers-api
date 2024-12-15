@@ -8,34 +8,78 @@ const markerSvg = `<svg viewBox="-4 0 36 36">
 
 const activeTooltips = new Set(); // Множество для отслеживания активных тултипов
 
+const gData = [
+  {
+    "lat": 37.7749,
+    "lng": -122.4194,
+    "size": 40,
+    "color": "red",
+    "title": "Сан-Франциско",
+    "description": "20 января - 3 марта 2028",
+    "url": "https://example.com/san-francisco"
+  }
+]
+
 const Globe = new ThreeGlobe()
   .globeImageUrl("//unpkg.com/three-globe/example/img/earth-blue-marble.jpg")
-  .bumpImageUrl("//unpkg.com/three-globe/example/img/earth-topology.png");
+  .bumpImageUrl("//unpkg.com/three-globe/example/img/earth-topology.png")
+  .htmlElementsData(gData).htmlElement((d) => {
+    const el = document.createElement("div");
+    el.innerHTML = markerSvg;
+    el.style.color = d.color;
+    el.style.width = `${d.size}px`;
+    el.style.pointerEvents = "auto";
 
-async function loadMarkers() {
-  try {
-    const response = await fetch(
-      "https://blackonechik.github.io/casual-markers-api/data.json"
-    ); // Ваш API-эндпоинт
-    const gData = await response.json(); // Получаем данные из API
+    // Создаем тултип
+    const tooltip = document.createElement("div");
+    tooltip.style.position = "absolute";
+    tooltip.style.background = "rgba(255, 255, 255, 0.9)";
+    tooltip.style.border = "1px solid #ccc";
+    tooltip.style.borderRadius = "5px";
+    tooltip.style.padding = "10px";
+    tooltip.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
+    tooltip.style.display = "none"; // Скрываем по умолчанию
+    tooltip.style.zIndex = "10";
 
-    Globe.htmlElementsData(gData).htmlElement((d) => {
-      const el = document.createElement("div");
-      el.innerHTML = markerSvg;
-      el.style.color = d.color;
-      el.style.width = `${d.size}px`;
-      el.style.pointerEvents = "auto";
+    // Добавляем контент тултипа
+    tooltip.innerHTML = `
+            <div class="tooltip-i">
+              <h3>${d.title}</h3>
+              <p>${d.description}</p>
+              <button>Перейти</button>
+            </div>
+          `;
 
-
-      return el;
+    // Добавляем кнопку перехода
+    const button = tooltip.querySelector("button");
+    button.addEventListener("click", (e) => {
+      e.stopPropagation(); // Предотвращаем всплытие
+      window.open(d.url, "_blank"); // Открываем ссылку в новой вкладке
     });
-  } catch (error) {
-    console.error("Ошибка при загрузке данных маркеров:", error);
-  }
-}
 
-// Загружаем маркеры с API
-loadMarkers();
+    // Добавляем тултип в элемент маркера
+    el.appendChild(tooltip);
+
+    // Обрабатываем событие клика
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation(); // Останавливаем всплытие событий
+
+      // Закрываем другие активные тултипы
+      activeTooltips.forEach((t) => (t.style.display = "none"));
+      activeTooltips.clear();
+
+      // Показываем тултип
+      tooltip.style.display = "block";
+      tooltip.style.left = `${e.offsetX + 10}px`; // Смещаем тултип относительно курсора
+      tooltip.style.top = `${e.offsetY + 10}px`;
+
+      // Добавляем тултип в активные
+      activeTooltips.add(tooltip);
+    });
+
+    return el;
+  });
 
 // Скрываем тултипы при клике на карту
 document.addEventListener("click", () => {
