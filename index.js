@@ -26,53 +26,6 @@ async function loadMarkers() {
       el.style.width = `${d.size}px`;
       el.style.pointerEvents = "auto";
 
-      // Создаем тултип
-      const tooltip = document.createElement("div");
-      tooltip.style.position = "absolute";
-      tooltip.style.background = "rgba(255, 255, 255, 0.9)";
-      tooltip.style.border = "1px solid #ccc";
-      tooltip.style.borderRadius = "5px";
-      tooltip.style.padding = "10px";
-      tooltip.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
-      tooltip.style.display = "none"; // Скрываем по умолчанию
-      tooltip.style.zIndex = "10";
-
-      // Добавляем контент тултипа
-      tooltip.innerHTML = `
-              <div class="tooltip-i">
-                <h3>${d.title}</h3>
-                <p>${d.description}</p>
-                <button>Перейти</button>
-              </div>
-            `;
-
-      // Добавляем кнопку перехода
-      const button = tooltip.querySelector("button");
-      button.addEventListener("click", (e) => {
-        e.stopPropagation(); // Предотвращаем всплытие
-        window.open(d.url, "_blank"); // Открываем ссылку в новой вкладке
-      });
-
-      // Добавляем тултип в элемент маркера
-      el.appendChild(tooltip);
-
-      // Обрабатываем событие клика
-      el.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation(); // Останавливаем всплытие событий
-
-        // Закрываем другие активные тултипы
-        activeTooltips.forEach((t) => (t.style.display = "none"));
-        activeTooltips.clear();
-
-        // Показываем тултип
-        tooltip.style.display = "block";
-        tooltip.style.left = `${e.offsetX + 10}px`; // Смещаем тултип относительно курсора
-        tooltip.style.top = `${e.offsetY + 10}px`;
-
-        // Добавляем тултип в активные
-        activeTooltips.add(tooltip);
-      });
 
       return el;
     });
