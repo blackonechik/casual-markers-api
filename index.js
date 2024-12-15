@@ -9,36 +9,15 @@ const markerSvg = `<svg viewBox="-4 0 36 36">
 const activeTooltips = new Set(); // Множество для отслеживания активных тултипов
 
 const N = 1;
-const gData = [
-  {
-    lat: (Math.random() - 0.5) * 180,
-    lng: (Math.random() - 0.5) * 360,
-    size: 30,
-    color: "red",
-    title: `Амур и Колыма`,
-    description: `4 - 15 августа 2024 года`,
-    url: `https://beta.rcb.ru/amur-i-kolyma`,
-  },
-  {
-    lat: (Math.random() - 0.5) * 180,
-    lng: (Math.random() - 0.5) * 360,
-    size: 30,
-    color: "red",
-    title: `Амур и Колыма`,
-    description: `4 - 15 августа 2024 года`,
-    url: `https://beta.rcb.ru/amur-i-kolyma`,
-  },
-  {
-    lat: (Math.random() - 0.5) * 180,
-    lng: (Math.random() - 0.5) * 360,
-    size: 30,
-    color: "red",
-    title: `Амур и Колыма`,
-    description: `4 - 15 августа 2024 года`,
-    url: `https://beta.rcb.ru/amur-i-kolyma`,
-  },
-];
-
+const gData = [...Array(N).keys()].map(() => ({
+  lat: (Math.random() - 0.5) * 180,
+  lng: (Math.random() - 0.5) * 360,
+  size: 30,
+  color: "red",
+  title: `Амур и Колыма`,
+  description: `4 - 15 августа 2024 года`,
+  url: `https://beta.rcb.ru/amur-i-kolyma`,
+}));
 
 const Globe = new ThreeGlobe()
   .globeImageUrl("//unpkg.com/three-globe/example/img/earth-blue-marble.jpg")
