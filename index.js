@@ -27,6 +27,7 @@ const Globe = new ThreeGlobe()
     const el = document.createElement("div");
     el.className = "marker";
     el.innerHTML = markerSvg;
+    console.log("Создан маркер:", el); // Добавьте лог
     el.style.color = d.color;
     el.style.width = `${d.size}px`;
     el.style.pointerEvents = "auto";
