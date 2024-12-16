@@ -19,6 +19,21 @@ const gData = [...Array(N).keys()].map(() => ({
   url: `https://beta.rcb.ru/amur-i-kolyma`,
 }));
 
+// Создаем контейнер для тултипа
+const tooltipContainer = document.createElement("div");
+tooltipContainer.style.position = "absolute";
+tooltipContainer.style.bottom = "20px"; // Отступ от нижней части контейнера
+tooltipContainer.style.left = "50%";
+tooltipContainer.style.transform = "translateX(-50%)";
+tooltipContainer.style.background = "rgba(255, 255, 255, 0.9)";
+tooltipContainer.style.border = "1px solid #ccc";
+tooltipContainer.style.borderRadius = "5px";
+tooltipContainer.style.padding = "10px";
+tooltipContainer.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
+tooltipContainer.style.display = "none"; // Скрываем по умолчанию
+tooltipContainer.style.zIndex = "10";
+document.body.appendChild(tooltipContainer);
+
 const Globe = new ThreeGlobe()
   .globeImageUrl("//unpkg.com/three-globe/example/img/earth-blue-marble.jpg")
   .bumpImageUrl("//unpkg.com/three-globe/example/img/earth-topology.png")
@@ -34,16 +49,7 @@ const Globe = new ThreeGlobe()
 
     // Создаем тултип
     const tooltip = document.createElement("div");
-    tooltip.style.position = "absolute";
-    tooltip.style.background = "rgba(255, 255, 255, 0.9)";
-    tooltip.style.border = "1px solid #ccc";
-    tooltip.style.borderRadius = "5px";
-    tooltip.style.padding = "10px";
-    tooltip.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
     tooltip.style.display = "none"; // Скрываем по умолчанию
-    tooltip.style.zIndex = "10";
-
-    // Добавляем контент тултипа
     tooltip.innerHTML = `
             <div class="tooltip-i">
               <h3>${d.title}</h3>
@@ -67,26 +73,34 @@ const Globe = new ThreeGlobe()
       e.preventDefault();
       e.stopPropagation(); // Останавливаем всплытие событий
 
-      // Закрываем другие активные тултипы
-      activeTooltips.forEach((t) => (t.style.display = "none"));
-      activeTooltips.clear();
+      // Обновляем содержимое тултипа в контейнере
+      tooltipContainer.innerHTML = `
+        <h3>${d.title}</h3>
+        <p>${d.description}</p>
+        <button>Перейти</button>
+      `;
 
-      // Показываем тултип
-      tooltip.style.display = "block";
-      tooltip.style.left = `${e.offsetX + 10}px`; // Смещаем тултип относительно курсора
-      tooltip.style.top = `${e.offsetY + 10}px`;
+      // Обработчик для кнопки
+      const button = tooltipContainer.querySelector("button");
+      button.addEventListener("click", (e) => {
+        e.stopPropagation(); // Предотвращаем всплытие
+        window.open(d.url, "_blank"); // Открываем ссылку в новой вкладке
+      });
 
-      // Добавляем тултип в активные
-      activeTooltips.add(tooltip);
+      // Показываем тултип внизу контейнера
+      tooltipContainer.style.display = "block";
     });
+
     console.log(el);
     return el;
   });
 
 // Скрываем тултипы при клике на карту
-document.addEventListener("click", () => {
-  activeTooltips.forEach((tooltip) => (tooltip.style.display = "none"));
-  activeTooltips.clear();
+document.addEventListener("click", (e) => {
+  // Проверяем, если клик не внутри контейнера тултипа
+  if (!tooltipContainer.contains(e.target)) {
+    tooltipContainer.style.display = "none"; // Скрываем тултип
+  }
 });
 
 // Настройка рендереров
