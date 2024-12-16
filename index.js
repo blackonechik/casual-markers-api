@@ -101,15 +101,10 @@ renderers.forEach((r, idx) => {
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xffffff);
 scene.add(Globe);
-scene.add(new THREE.AmbientLight(0xcccccc, Math.PI));
-
+scene.add(new THREE.AmbientLight(0xffffff, 1));
 const camera = new THREE.PerspectiveCamera();
 camera.aspect = container.clientWidth / container.clientHeight;
 camera.updateProjectionMatrix();
-
-const light = new THREE.DirectionalLight(0xffffff, 2);
-light.position.set(0, 0, 100);
-scene.add(light);
 camera.position.z = 290;
 
 const tbControls = new TrackballControls(camera, renderers[0].domElement);
