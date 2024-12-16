@@ -45,24 +45,6 @@ const Globe = new ThreeGlobe()
     el.style.width = `${d.size}px`;
     el.style.pointerEvents = "auto"; // Убедитесь, что маркер имеет pointer-events
 
-    const tooltip = document.createElement("div");
-    tooltip.style.display = "none"; // Скрываем по умолчанию
-    tooltip.innerHTML = `
-      <div class="tooltip-i">
-        <h3>${d.title}</h3>
-        <p>${d.description}</p>
-        <button>Перейти</button>
-      </div>
-    `;
-
-    const button = tooltip.querySelector("button");
-    button.addEventListener("click", (e) => {
-      e.stopPropagation(); // Предотвращаем всплытие
-      window.open(d.url, "_blank"); // Открываем ссылку в новой вкладке
-    });
-
-    el.appendChild(tooltip);
-
     el.addEventListener("click", (e) => {
       e.preventDefault();
       e.stopPropagation(); // Останавливаем всплытие
@@ -70,14 +52,8 @@ const Globe = new ThreeGlobe()
       tooltipContainer.innerHTML = `
         <h3>${d.title}</h3>
         <p>${d.description}</p>
-        <button>Перейти</button>
+        <a href="${d.url}" target="_blank">Перейти</a>
       `;
-
-      const button = tooltipContainer.querySelector("button");
-      button.addEventListener("click", (e) => {
-        e.stopPropagation(); // Предотвращаем всплытие
-        window.open(d.url, "_blank"); // Открываем ссылку в новой вкладке
-      });
 
       tooltipContainer.style.display = "block";
     });
