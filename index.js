@@ -1,6 +1,5 @@
 import { TrackballControls } from "three/addons/controls/TrackballControls.js";
 import { CSS2DRenderer } from "three/addons/renderers/CSS2DRenderer.js";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 const markerSvg = `<svg viewBox="-4 0 36 36">
         <path fill="currentColor" d="M14,0 C21.732,0 28,5.641 28,12.6 C28,23.963 14,36 14,36 C14,36 0,24.064 0,12.6 C0,5.641 6.268,0 14,0 Z"></path>
@@ -85,10 +84,12 @@ camera.aspect = container.clientWidth / container.clientHeight;
 camera.updateProjectionMatrix();
 camera.position.z = 290;
 
-const tbControls = new OrbitControls(camera, renderers[0].domElement);
-tbControls.enablePan = false;
-tbControls.maxPolarAngle = Math.PI / 2; // Ограничение для предотвращения переворота
-tbControls.minPolarAngle = 0;
+const tbControls = new TrackballControls(camera, renderers[0].domElement);
+tbControls.noPan = true;
+tbControls.dynamicDampingFactor = 0.2;
+tbControls.enabled = true;
+tbControls.minDistance = 101;
+tbControls.rotateSpeed = 1;
 tbControls.zoomSpeed = 0.8;
 
 Globe.setPointOfView(camera.position, Globe.position);
@@ -103,6 +104,10 @@ function resizeRenderer() {
   camera.aspect = container.clientWidth / container.clientHeight;
   camera.updateProjectionMatrix();
 }
+
+window.addEventListener('mouseup', () => {
+  tbControls.handleMouseUp(); // Сбрасываем состояние управления
+});
 
 window.addEventListener("resize", resizeRenderer);
 resizeRenderer();
