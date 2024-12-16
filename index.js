@@ -20,17 +20,6 @@ const gData = [{
 
 const tooltipContainer = document.createElement("div");
 tooltipContainer.className = "tooltip-container";
-tooltipContainer.style.position = "absolute";
-tooltipContainer.style.bottom = "20px"; // Отступ от нижней части контейнера
-tooltipContainer.style.left = "50%";
-tooltipContainer.style.transform = "translateX(-50%)";
-tooltipContainer.style.background = "rgba(255, 255, 255, 0.9)";
-tooltipContainer.style.border = "1px solid #ccc";
-tooltipContainer.style.borderRadius = "5px";
-tooltipContainer.style.padding = "10px";
-tooltipContainer.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
-tooltipContainer.style.display = "none"; // Скрываем по умолчанию
-tooltipContainer.style.zIndex = "10";
 container.appendChild(tooltipContainer);
 
 const Globe = new ThreeGlobe()
