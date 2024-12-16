@@ -106,7 +106,7 @@ function resizeRenderer() {
 }
 
 window.addEventListener('mouseup', () => {
-  tbControls.handleMouseUp(); // Сбрасываем состояние управления
+  tbControls.update()
 });
 
 window.addEventListener("resize", resizeRenderer);
