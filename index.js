@@ -97,16 +97,19 @@ let isMouseDown = false;
 
 // Отслеживаем нажатие мыши
 renderers[0].domElement.addEventListener("mousedown", () => {
+  console.log("Мышь нажата");
   isMouseDown = true;
 });
 
 // Отслеживаем отпускание мыши
 renderers[0].domElement.addEventListener("mouseup", () => {
+  console.log("Мышь отпущена");
   isMouseDown = false;
 });
 
 // Добавляем обработчик событий для TrackballControls
 tbControls.addEventListener("change", (e) => {
+  console.log("Статус мыши", isMouseDown);
   if (!isMouseDown) return; // Пропускаем обработку, если клавиша не зажата
 
   console.log("Ивент обработан:", e); // Логируем событие
