@@ -101,7 +101,7 @@ renderers.forEach((r, idx) => {
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xffffff);
 scene.add(Globe);
-scene.add(new THREE.AmbientLight(0xffffff, 10));
+scene.add(new THREE.AmbientLight(0xffffff, 6));
 const camera = new THREE.PerspectiveCamera();
 camera.aspect = container.clientWidth / container.clientHeight;
 camera.updateProjectionMatrix();
