@@ -61,11 +61,11 @@ const Globe = new ThreeGlobe()
     return el;
   });
 
-document.addEventListener("click", (e) => {
-  if (!tooltipContainer.contains(e.target)) {
-    tooltipContainer.style.display = "none"; // Скрываем тултип
-  }
-});
+// document.addEventListener("click", (e) => {
+//   if (!tooltipContainer.contains(e.target)) {
+//     tooltipContainer.style.display = "none"; // Скрываем тултип
+//   }
+// });
 
 const renderers = [new THREE.WebGLRenderer(), new CSS2DRenderer()];
 
