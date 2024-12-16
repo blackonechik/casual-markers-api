@@ -8,15 +8,26 @@ const markerSvg = `<svg viewBox="-4 0 36 36">
 
 const container = document.getElementById("globeViz");
 
-const gData = [{
-  lat: 50.2906,
-  lng: 127.5272,
-  size: 24,
-  color: "red",
-  title: `Амур и Колыма`,
-  description: `4 - 15 августа 2024 года`,
-  url: `https://beta.rcb.ru/amur-i-kolyma`,
-}];
+const gData = [
+  {
+    lat: 50.2906,
+    lng: 127.5272,
+    size: 24,
+    color: "red",
+    title: `Амур и Колыма`,
+    description: `4 - 15 августа 2024 года`,
+    url: `https://beta.rcb.ru/amur-i-kolyma`,
+  },
+  {
+    lat: 64.7337,
+    lng: 177.5089,
+    size: 24,
+    color: "red",
+    title: `Чукотка`,
+    description: `14-25 августа 2023 года`,
+    url: `https://beta.rcb.ru/cukotka`,
+  },
+];
 
 const tooltipContainer = document.createElement("div");
 tooltipContainer.className = "tooltip-container";
@@ -87,7 +98,6 @@ Globe.setPointOfView(camera.position, Globe.position);
 tbControls.addEventListener("change", () => {
   Globe.setPointOfView(camera.position, Globe.position);
 });
-
 
 function resizeRenderer() {
   renderers.forEach((r) =>
