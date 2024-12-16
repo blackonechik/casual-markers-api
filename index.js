@@ -24,7 +24,7 @@ const gData = [
     size: 24,
     color: "red",
     title: `Чукотка`,
-    description: `14-25 августа 2023 года`,
+    description: `14 - 25 августа 2023 года`,
     url: `https://beta.rcb.ru/cukotka`,
   },
 ];
