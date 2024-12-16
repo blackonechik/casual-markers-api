@@ -8,16 +8,15 @@ const markerSvg = `<svg viewBox="-4 0 36 36">
 
 const container = document.getElementById("globeViz");
 
-const N = 1;
-const gData = [...Array(N).keys()].map(() => ({
-  lat: (Math.random() - 0.5) * 180,
-  lng: (Math.random() - 0.5) * 360,
+const gData = [{
+  lat: 50.2906,
+  lng: 127.5272,
   size: 30,
   color: "red",
   title: `Амур и Колыма`,
   description: `4 - 15 августа 2024 года`,
   url: `https://beta.rcb.ru/amur-i-kolyma`,
-}));
+}];
 
 const tooltipContainer = document.createElement("div");
 tooltipContainer.style.position = "absolute";
@@ -43,11 +42,11 @@ const Globe = new ThreeGlobe()
     el.innerHTML = markerSvg;
     el.style.color = d.color;
     el.style.width = `${d.size}px`;
-    el.style.pointerEvents = "auto"; // Убедитесь, что маркер имеет pointer-events
+    el.style.pointerEvents = "auto";
 
     el.addEventListener("click", (e) => {
       e.preventDefault();
-      e.stopPropagation(); // Останавливаем всплытие
+      e.stopPropagation();
 
       tooltipContainer.innerHTML = `
         <h3>${d.title}</h3>
@@ -61,11 +60,11 @@ const Globe = new ThreeGlobe()
     return el;
   });
 
-// document.addEventListener("click", (e) => {
-//   if (!tooltipContainer.contains(e.target)) {
-//     tooltipContainer.style.display = "none"; // Скрываем тултип
-//   }
-// });
+document.addEventListener("click", (e) => {
+  if (!tooltipContainer.contains(e.target)) {
+    tooltipContainer.style.display = "none"; // Скрываем тултип
+  }
+});
 
 const renderers = [new THREE.WebGLRenderer(), new CSS2DRenderer()];
 
