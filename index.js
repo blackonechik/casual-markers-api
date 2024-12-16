@@ -6,7 +6,7 @@ const markerSvg = `<svg viewBox="-4 0 36 36">
         <circle fill="white" cx="14" cy="14" r="7"></circle>
       </svg>`;
 
-const activeTooltips = new Set(); // Множество для отслеживания активных тултипов
+const container = document.getElementById("globeViz");
 
 const N = 1;
 const gData = [...Array(N).keys()].map(() => ({
@@ -91,7 +91,6 @@ document.addEventListener("click", (e) => {
   }
 });
 
-const container = document.getElementById("globeViz");
 const renderers = [new THREE.WebGLRenderer(), new CSS2DRenderer()];
 
 renderers.forEach((r, idx) => {
@@ -123,7 +122,9 @@ tbControls.addEventListener("change", () =>
 );
 
 function resizeRenderer() {
-  renderers.forEach((r) => r.setSize(container.clientWidth, container.clientHeight));
+  renderers.forEach((r) =>
+    r.setSize(container.clientWidth, container.clientHeight)
+  );
   camera.aspect = container.clientWidth / container.clientHeight;
   camera.updateProjectionMatrix();
 }
