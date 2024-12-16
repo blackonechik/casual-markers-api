@@ -89,7 +89,7 @@ tbControls.noPan = true;
 tbControls.dynamicDampingFactor = 0.2;
 tbControls.enabled = true;
 tbControls.minDistance = 101;
-tbControls.rotateSpeed = 1;
+tbControls.rotateSpeed = 2;
 tbControls.zoomSpeed = 0.8;
 
 Globe.setPointOfView(camera.position, Globe.position);
