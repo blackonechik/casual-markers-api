@@ -101,7 +101,7 @@ renderers.forEach((r, idx) => {
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xffffff);
 scene.add(Globe);
-// scene.add(new THREE.AmbientLight(0xcccccc, Math.PI));
+scene.add(new THREE.AmbientLight(0xcccccc, Math.PI));
 // scene.add(new THREE.DirectionalLight(0xffffff, 2.6 * Math.PI));
 
 const camera = new THREE.PerspectiveCamera();
