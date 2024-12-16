@@ -34,8 +34,8 @@ tooltipContainer.className = "tooltip-container";
 container.appendChild(tooltipContainer);
 
 const Globe = new ThreeGlobe()
-  .globeImageUrl("https://blackonechik.github.io/casual-markers-api/map.webp")
-  .bumpImageUrl("//unpkg.com/three-globe/example/img/earth-topology.png")
+  .globeImageUrl("https://blackonechik.github.io/casual-markers-api/map-big.webp")
+  .bumpImageUrl("https://blackonechik.github.io/casual-markers-api/earth-topology.webp")
   .htmlElementsData(gData)
   .htmlElement((d) => {
     const el = document.createElement("div");
