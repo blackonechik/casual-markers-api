@@ -1,5 +1,6 @@
 import { TrackballControls } from "three/addons/controls/TrackballControls.js";
 import { CSS2DRenderer } from "three/addons/renderers/CSS2DRenderer.js";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 const markerSvg = `<svg viewBox="-4 0 36 36">
         <path fill="currentColor" d="M14,0 C21.732,0 28,5.641 28,12.6 C28,23.963 14,36 14,36 C14,36 0,24.064 0,12.6 C0,5.641 6.268,0 14,0 Z"></path>
@@ -11,7 +12,7 @@ const container = document.getElementById("globeViz");
 const gData = [{
   lat: 50.2906,
   lng: 127.5272,
-  size: 30,
+  size: 20,
   color: "red",
   title: `Амур и Колыма`,
   description: `4 - 15 августа 2024 года`,
@@ -19,6 +20,7 @@ const gData = [{
 }];
 
 const tooltipContainer = document.createElement("div");
+tooltipContainer.className = "tooltip-container";
 tooltipContainer.style.position = "absolute";
 tooltipContainer.style.bottom = "20px"; // Отступ от нижней части контейнера
 tooltipContainer.style.left = "50%";
@@ -49,8 +51,8 @@ const Globe = new ThreeGlobe()
       e.stopPropagation();
 
       tooltipContainer.innerHTML = `
-        <h3>${d.title}</h3>
-        <p>${d.description}</p>
+        <h3 class="tooltip-title">${d.title}</h3>
+        <p class="tooltip-description">${d.description}</p>
         <a href="${d.url}" target="_blank">Перейти</a>
       `;
 
@@ -83,13 +85,11 @@ camera.aspect = container.clientWidth / container.clientHeight;
 camera.updateProjectionMatrix();
 camera.position.z = 290;
 
-const tbControls = new TrackballControls(camera, renderers[0].domElement);
-tbControls.noPan = true;
-tbControls.dynamicDampingFactor = 0.2;
-tbControls.enabled = true;
-tbControls.minDistance = 101;
-tbControls.rotateSpeed = 1;
-tbControls.zoomSpeed = 0.8;
+const controls = new OrbitControls(camera, renderers[0].domElement);
+controls.enablePan = false;
+controls.maxPolarAngle = Math.PI / 2; // Ограничение для предотвращения переворота
+controls.minPolarAngle = 0;
+controls.zoomSpeed = 0.8;
 
 Globe.setPointOfView(camera.position, Globe.position);
 tbControls.addEventListener("change", () =>
