@@ -93,9 +93,10 @@ tbControls.rotateSpeed = 2;
 tbControls.zoomSpeed = 0.8;
 
 Globe.setPointOfView(camera.position, Globe.position);
-tbControls.addEventListener("change", () =>
+tbControls.addEventListener("change", (e) => {
+  console.log(e);
   Globe.setPointOfView(camera.position, Globe.position)
-);
+})
 
 function resizeRenderer() {
   renderers.forEach((r) =>
