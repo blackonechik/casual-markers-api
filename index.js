@@ -109,8 +109,8 @@ renderers[0].domElement.addEventListener("mouseup", () => {
 
 // Добавляем обработчик событий для TrackballControls
 tbControls.addEventListener("change", (e) => {
-  console.log("Статус мыши", isMouseDown);
   if (!isMouseDown) return; // Пропускаем обработку, если клавиша не зажата
+  isMouseDown = false;
 
   console.log("Ивент обработан:", e); // Логируем событие
   Globe.setPointOfView(camera.position, Globe.position);
