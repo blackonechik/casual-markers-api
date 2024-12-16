@@ -11,7 +11,7 @@ const container = document.getElementById("globeViz");
 const gData = [{
   lat: 50.2906,
   lng: 127.5272,
-  size: 20,
+  size: 24,
   color: "red",
   title: `Амур и Колыма`,
   description: `4 - 15 августа 2024 года`,
