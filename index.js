@@ -44,7 +44,7 @@ const Globe = new ThreeGlobe()
         <a href="${d.url}" target="_blank">Перейти</a>
       `;
 
-      tooltipContainer.style.display = "block";
+      tooltipContainer.style.display = "flex";
     });
 
     return el;
