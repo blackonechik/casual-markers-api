@@ -19,7 +19,6 @@ const gData = [...Array(N).keys()].map(() => ({
   url: `https://beta.rcb.ru/amur-i-kolyma`,
 }));
 
-// Создаем контейнер для тултипа
 const tooltipContainer = document.createElement("div");
 tooltipContainer.style.position = "absolute";
 tooltipContainer.style.bottom = "20px"; // Отступ от нижней части контейнера
@@ -42,70 +41,59 @@ const Globe = new ThreeGlobe()
     const el = document.createElement("div");
     el.className = "marker";
     el.innerHTML = markerSvg;
-    console.log("Создан маркер:", el); // Добавьте лог
     el.style.color = d.color;
     el.style.width = `${d.size}px`;
-    el.style.pointerEvents = "auto";
+    el.style.pointerEvents = "auto"; // Убедитесь, что маркер имеет pointer-events
 
-    // Создаем тултип
     const tooltip = document.createElement("div");
     tooltip.style.display = "none"; // Скрываем по умолчанию
     tooltip.innerHTML = `
-            <div class="tooltip-i">
-              <h3>${d.title}</h3>
-              <p>${d.description}</p>
-              <button>Перейти</button>
-            </div>
-          `;
+      <div class="tooltip-i">
+        <h3>${d.title}</h3>
+        <p>${d.description}</p>
+        <button>Перейти</button>
+      </div>
+    `;
 
-    // Добавляем кнопку перехода
     const button = tooltip.querySelector("button");
     button.addEventListener("click", (e) => {
       e.stopPropagation(); // Предотвращаем всплытие
       window.open(d.url, "_blank"); // Открываем ссылку в новой вкладке
     });
 
-    // Добавляем тултип в элемент маркера
     el.appendChild(tooltip);
 
-    // Обрабатываем событие клика
     el.addEventListener("click", (e) => {
       e.preventDefault();
-      e.stopPropagation(); // Останавливаем всплытие событий
+      e.stopPropagation(); // Останавливаем всплытие
 
-      // Обновляем содержимое тултипа в контейнере
       tooltipContainer.innerHTML = `
         <h3>${d.title}</h3>
         <p>${d.description}</p>
         <button>Перейти</button>
       `;
 
-      // Обработчик для кнопки
       const button = tooltipContainer.querySelector("button");
       button.addEventListener("click", (e) => {
         e.stopPropagation(); // Предотвращаем всплытие
         window.open(d.url, "_blank"); // Открываем ссылку в новой вкладке
       });
 
-      // Показываем тултип внизу контейнера
       tooltipContainer.style.display = "block";
     });
 
-    console.log(el);
     return el;
   });
 
-// Скрываем тултипы при клике на карту
 document.addEventListener("click", (e) => {
-  // Проверяем, если клик не внутри контейнера тултипа
   if (!tooltipContainer.contains(e.target)) {
     tooltipContainer.style.display = "none"; // Скрываем тултип
   }
 });
 
-// Настройка рендереров
 const container = document.getElementById("globeViz");
 const renderers = [new THREE.WebGLRenderer(), new CSS2DRenderer()];
+
 renderers.forEach((r, idx) => {
   r.domElement.style.position = "absolute";
   r.domElement.style.pointerEvents = idx > 0 ? "none" : "auto";
@@ -122,9 +110,9 @@ camera.updateProjectionMatrix();
 camera.position.z = 290;
 
 const tbControls = new TrackballControls(camera, renderers[0].domElement);
-tbControls.noPan = true; // Отключаем панорамирование
-tbControls.dynamicDampingFactor = 0.2; // Инерция вращения
-tbControls.enabled = true; // Отключаем управление по умолчанию
+tbControls.noPan = true;
+tbControls.dynamicDampingFactor = 0.2;
+tbControls.enabled = true;
 tbControls.minDistance = 101;
 tbControls.rotateSpeed = 1;
 tbControls.zoomSpeed = 0.8;
@@ -135,9 +123,7 @@ tbControls.addEventListener("change", () =>
 );
 
 function resizeRenderer() {
-  renderers.forEach((r) => {
-    r.setSize(container.clientWidth, container.clientHeight);
-  });
+  renderers.forEach((r) => r.setSize(container.clientWidth, container.clientHeight));
   camera.aspect = container.clientWidth / container.clientHeight;
   camera.updateProjectionMatrix();
 }
