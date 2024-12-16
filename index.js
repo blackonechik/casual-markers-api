@@ -85,11 +85,11 @@ camera.aspect = container.clientWidth / container.clientHeight;
 camera.updateProjectionMatrix();
 camera.position.z = 290;
 
-const controls = new OrbitControls(camera, renderers[0].domElement);
-controls.enablePan = false;
-controls.maxPolarAngle = Math.PI / 2; // Ограничение для предотвращения переворота
-controls.minPolarAngle = 0;
-controls.zoomSpeed = 0.8;
+const tbControls = new OrbitControls(camera, renderers[0].domElement);
+tbControls.enablePan = false;
+tbControls.maxPolarAngle = Math.PI / 2; // Ограничение для предотвращения переворота
+tbControls.minPolarAngle = 0;
+tbControls.zoomSpeed = 0.8;
 
 Globe.setPointOfView(camera.position, Globe.position);
 tbControls.addEventListener("change", () =>
