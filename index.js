@@ -34,7 +34,7 @@ tooltipContainer.className = "tooltip-container";
 container.appendChild(tooltipContainer);
 
 const Globe = new ThreeGlobe()
-  .globeImageUrl("//unpkg.com/three-globe/example/img/earth-blue-marble.jpg")
+  .globeImageUrl("https://blackonechik.github.io/casual-markers-api/map.webp")
   .bumpImageUrl("//unpkg.com/three-globe/example/img/earth-topology.png")
   .htmlElementsData(gData)
   .htmlElement((d) => {
