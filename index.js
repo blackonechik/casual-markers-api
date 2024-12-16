@@ -93,10 +93,26 @@ tbControls.rotateSpeed = 2;
 tbControls.zoomSpeed = 0.8;
 
 Globe.setPointOfView(camera.position, Globe.position);
+let isMouseDown = false;
+
+// Отслеживаем нажатие мыши
+renderers[0].domElement.addEventListener("mousedown", () => {
+  isMouseDown = true;
+});
+
+// Отслеживаем отпускание мыши
+renderers[0].domElement.addEventListener("mouseup", () => {
+  isMouseDown = false;
+});
+
+// Добавляем обработчик событий для TrackballControls
 tbControls.addEventListener("change", (e) => {
-  console.log(e);
-  Globe.setPointOfView(camera.position, Globe.position)
-})
+  if (!isMouseDown) return; // Пропускаем обработку, если клавиша не зажата
+
+  console.log("Ивент обработан:", e); // Логируем событие
+  Globe.setPointOfView(camera.position, Globe.position);
+});
+
 
 function resizeRenderer() {
   renderers.forEach((r) =>
