@@ -93,9 +93,9 @@ tbControls.rotateSpeed = 1;
 tbControls.zoomSpeed = 0.8;
 
 Globe.setPointOfView(camera.position, Globe.position);
-tbControls.addEventListener("change", () =>
-  Globe.setPointOfView(camera.position, Globe.position)
-);
+// tbControls.addEventListener("change", () =>
+//   Globe.setPointOfView(camera.position, Globe.position)
+// );
 
 function resizeRenderer() {
   renderers.forEach((r) =>
@@ -104,10 +104,6 @@ function resizeRenderer() {
   camera.aspect = container.clientWidth / container.clientHeight;
   camera.updateProjectionMatrix();
 }
-
-window.addEventListener('mouseup', () => {
-  tbControls.reset()
-});
 
 window.addEventListener("resize", resizeRenderer);
 resizeRenderer();
