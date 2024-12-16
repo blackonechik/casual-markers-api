@@ -106,7 +106,7 @@ function resizeRenderer() {
 }
 
 window.addEventListener('mouseup', () => {
-  tbControls.update()
+  tbControls.reset()
 });
 
 window.addEventListener("resize", resizeRenderer);
