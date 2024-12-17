@@ -127,11 +127,32 @@ resetButton.style.zIndex = "10";
 container.appendChild(resetButton);
 
 resetButton.addEventListener("click", () => {
-  // Сброс ориентации камеры для выравнивания глобуса
-  camera.up.set(0, 1, 0); // Установка "верхнего" направления камеры
-  camera.lookAt(0, 0, 0); // Смотрим в центр сцены
-  tbControls.update();
+  const targetUp = new THREE.Vector3(0, 1, 0); // Вектор направления "север"
+  const targetPosition = new THREE.Vector3(0, 0, 290); // Положение камеры для стандартного вида
+  const duration = 1.5; // Длительность анимации в секундах
+  const startTime = performance.now();
+
+  function animate() {
+    const elapsed = (performance.now() - startTime) / 1000; // Время с начала анимации
+    const t = Math.min(elapsed / duration, 1); // Процент завершения (от 0 до 1)
+
+    // Линейная интерполяция для положения камеры
+    camera.position.lerpVectors(camera.position.clone(), targetPosition, t);
+
+    // Линейная интерполяция для ориентации камеры
+    camera.up.lerpVectors(camera.up.clone(), targetUp, t);
+    camera.lookAt(0, 0, 0); // Смотрим в центр сцены
+
+    tbControls.update();
+
+    if (t < 1) {
+      requestAnimationFrame(animate); // Продолжаем анимацию
+    }
+  }
+
+  animate();
 });
+
 
 (function animate() {
   tbControls.update();
