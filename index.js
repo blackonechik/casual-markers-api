@@ -128,8 +128,8 @@ container.appendChild(resetButton);
 
 resetButton.addEventListener("click", () => {
   // Сброс ориентации камеры для выравнивания глобуса
-  camera.position.set(0, 0, 290); // Север сверху, юг снизу
-  camera.lookAt(scene.position);
+  camera.up.set(0, 1, 0); // Установка "верхнего" направления камеры
+  camera.lookAt(0, 0, 0); // Смотрим в центр сцены
   tbControls.update();
 });
 
