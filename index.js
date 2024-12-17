@@ -127,30 +127,42 @@ resetButton.style.zIndex = "10";
 container.appendChild(resetButton);
 
 resetButton.addEventListener("click", () => {
-  const targetUp = new THREE.Vector3(0, 1, 0); // Вектор направления "север"
-  const targetPosition = new THREE.Vector3(0, 0, 290); // Положение камеры для стандартного вида
-  const duration = 1.5; // Длительность анимации в секундах
+  const targetUp = { x: 0, y: 1, z: 0 }; // Целевой "верхний" вектор камеры
+  const targetPosition = { x: 0, y: 0, z: camera.position.z }; // Целевая позиция камеры
+
+  const duration = 1000; // Длительность анимации в миллисекундах
   const startTime = performance.now();
 
-  function animate() {
-    const elapsed = (performance.now() - startTime) / 1000; // Время с начала анимации
-    const t = Math.min(elapsed / duration, 1); // Процент завершения (от 0 до 1)
+  const startUp = { ...camera.up }; // Текущий "верхний" вектор камеры
+  const startPosition = { ...camera.position }; // Текущее положение камеры
 
-    // Линейная интерполяция для положения камеры
-    camera.position.lerpVectors(camera.position.clone(), targetPosition, t);
+  function animate(time) {
+    const elapsed = time - startTime;
+    const progress = Math.min(elapsed / duration, 1); // Прогресс от 0 до 1
 
-    // Линейная интерполяция для ориентации камеры
-    camera.up.lerpVectors(camera.up.clone(), targetUp, t);
-    camera.lookAt(0, 0, 0); // Смотрим в центр сцены
+    // Линейная интерполяция (lerp) для "верхнего" вектора камеры
+    camera.up.set(
+      startUp.x + (targetUp.x - startUp.x) * progress,
+      startUp.y + (targetUp.y - startUp.y) * progress,
+      startUp.z + (targetUp.z - startUp.z) * progress
+    );
 
-    tbControls.update();
+    // Линейная интерполяция (lerp) для позиции камеры
+    camera.position.set(
+      startPosition.x + (targetPosition.x - startPosition.x) * progress,
+      startPosition.y + (targetPosition.y - startPosition.y) * progress,
+      startPosition.z + (targetPosition.z - startPosition.z) * progress
+    );
 
-    if (t < 1) {
+    camera.lookAt(0, 0, 0); // Обновляем направление камеры
+    tbControls.update(); // Обновляем управление
+
+    if (progress < 1) {
       requestAnimationFrame(animate); // Продолжаем анимацию
     }
   }
 
-  animate();
+  requestAnimationFrame(animate); // Запускаем анимацию
 });
 
 
