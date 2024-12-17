@@ -110,6 +110,29 @@ function resizeRenderer() {
 window.addEventListener("resize", resizeRenderer);
 resizeRenderer();
 
+// Добавляем кнопку для выравнивания глобуса
+const resetButton = document.createElement("button");
+resetButton.textContent = "Reset View";
+resetButton.className = "reset-button";
+resetButton.style.position = "absolute";
+resetButton.style.bottom = "10px";
+resetButton.style.right = "10px";
+resetButton.style.padding = "10px";
+resetButton.style.background = "#007BFF";
+resetButton.style.color = "white";
+resetButton.style.border = "none";
+resetButton.style.borderRadius = "5px";
+resetButton.style.cursor = "pointer";
+resetButton.style.zIndex = "10";
+container.appendChild(resetButton);
+
+resetButton.addEventListener("click", () => {
+  // Сброс ориентации камеры для выравнивания глобуса
+  camera.position.set(0, 0, 290); // Север сверху, юг снизу
+  camera.lookAt(scene.position);
+  tbControls.update();
+});
+
 (function animate() {
   tbControls.update();
   renderers.forEach((r) => r.render(scene, camera));
