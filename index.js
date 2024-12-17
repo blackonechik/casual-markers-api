@@ -127,44 +127,11 @@ resetButton.style.zIndex = "10";
 container.appendChild(resetButton);
 
 resetButton.addEventListener("click", () => {
-  const targetUp = { x: 0, y: 1, z: 0 }; // Целевой "верхний" вектор камеры
-  const targetPosition = { x: 0, y: 0 }; // Целевые координаты X и Y камеры
-  const fixedZ = camera.position.z; // Фиксированное значение Z
-
-  const duration = 1000; // Длительность анимации в миллисекундах
-  const startTime = performance.now();
-
-  const startPosition = { x: camera.position.x, y: camera.position.y };
-
-  function animate(time) {
-    const elapsed = time - startTime;
-    const progress = Math.min(elapsed / duration, 1); // Прогресс от 0 до 1
-
-    // Линейная интерполяция для X и Y
-    const currentX = startPosition.x + (targetPosition.x - startPosition.x) * progress;
-    const currentY = startPosition.y + (targetPosition.y - startPosition.y) * progress;
-
-    // Обновляем камеру
-    camera.position.set(currentX, currentY, fixedZ);
-
-    // Обновляем "верхний" вектор камеры
-    camera.up.set(
-      camera.up.x + (targetUp.x - camera.up.x) * progress,
-      camera.up.y + (targetUp.y - camera.up.y) * progress,
-      camera.up.z // Оставляем Z без изменений
-    );
-
-    camera.lookAt(0, 0, 0); // Направление камеры на центр
-    tbControls.update(); // Обновляем управление
-
-    if (progress < 1) {
-      requestAnimationFrame(animate); // Продолжаем анимацию
-    }
-  }
-
-  requestAnimationFrame(animate); // Запускаем анимацию
+  // Сброс ориентации камеры для выравнивания глобуса
+  camera.up.set(0, 1, 0); // Установка "верхнего" направления камеры
+  camera.lookAt(0, 0, 0); // Смотрим в центр сцены
+  tbControls.update();
 });
-
 
 (function animate() {
   tbControls.update();
