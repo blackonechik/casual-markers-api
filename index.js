@@ -12,7 +12,7 @@ const gData = [
   {
     lat: 50.2906,
     lng: 127.5272,
-    size: 24,
+    size: 20,
     color: "red",
     title: `Амур и Колыма`,
     description: `4 - 15 августа 2024 года`,
@@ -21,7 +21,7 @@ const gData = [
   {
     lat: 64.7337,
     lng: 177.5089,
-    size: 24,
+    size: 20,
     color: "red",
     title: `Чукотка`,
     description: `14 - 25 августа 2023 года`,
@@ -112,13 +112,7 @@ resizeRenderer();
 
 // Добавляем кнопку для выравнивания глобуса
 const resetButton = document.createElement("button");
-resetButton.style.position = "absolute";
-resetButton.style.bottom = "10px";
-resetButton.style.right = "10px";
-resetButton.style.border = "none";
-resetButton.style.borderRadius = "5px";
-resetButton.style.cursor = "pointer";
-resetButton.style.zIndex = "10";
+resetButton.classList.add("reset-button");
 
 // Добавление SVG элемента внутри кнопки
 resetButton.innerHTML = `
