@@ -112,24 +112,28 @@ resizeRenderer();
 
 // Добавляем кнопку для выравнивания глобуса
 const resetButton = document.createElement("button");
-resetButton.textContent = "Reset View";
-resetButton.className = "reset-button";
 resetButton.style.position = "absolute";
 resetButton.style.bottom = "10px";
 resetButton.style.right = "10px";
-resetButton.style.padding = "10px";
-resetButton.style.background = "#007BFF";
-resetButton.style.color = "white";
 resetButton.style.border = "none";
 resetButton.style.borderRadius = "5px";
 resetButton.style.cursor = "pointer";
 resetButton.style.zIndex = "10";
+
+// Добавление SVG элемента внутри кнопки
+resetButton.innerHTML = `
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="16" cy="16" r="16" fill="#FF0000"/>
+  <path d="M16 7.79799C21.8234 7.79799 26.5454 10.9499 26.5454 14.8283C26.5454 16.7968 25.3269 18.5778 23.3701 19.855C24.6238 18.8356 25.3737 17.5467 25.3737 16.1523C25.3737 12.8247 21.179 10.1414 16 10.1414V13.6566L11.3131 8.96971L16 4.28284V7.79799ZM16 24.202C10.1765 24.202 5.45453 21.0501 5.45453 17.1717C5.45453 15.2032 6.67311 13.4222 8.62988 12.1451C7.37615 13.1645 6.62625 14.4533 6.62625 15.8594C6.62625 19.1754 10.821 21.8586 16 21.8586V18.3434L20.6869 23.0303L16 27.7172V24.202Z" fill="white"/>
+</svg>
+`;
+
 container.appendChild(resetButton);
 
+
 resetButton.addEventListener("click", () => {
-  // Сброс ориентации камеры для выравнивания глобуса
-  camera.up.set(0, 1, 0); // Установка "верхнего" направления камеры
-  camera.lookAt(0, 0, 0); // Смотрим в центр сцены
+  camera.up.set(0, 1, 0);
+  camera.lookAt(0, 0, 0);
   tbControls.update();
 });
 
