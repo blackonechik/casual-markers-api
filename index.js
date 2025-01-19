@@ -109,8 +109,8 @@ const gData = [
     url: `https://beta.rcb.ru/balkany`,
   },
   {
-    lat: 31.5396,
-    lng: -110.7547,
+    lat: -50.3386,
+    lng: -72.2732,
     size: 20,
     color: "red",
     title: `Патагония`,
@@ -136,8 +136,8 @@ const gData = [
     url: `https://beta.rcb.ru/indokitai`,
   },
   {
-    lat: 55.9497,
-    lng: -3.1902,
+    lat: 53.3402,
+    lng: -6.2528,
     size: 20,
     color: "red",
     title: `Шотландия-Ирландия`,
@@ -154,8 +154,8 @@ const gData = [
     url: `https://beta.rcb.ru/peru-boliviia`,
   },
   {
-    lat: 42.4412,
-    lng: 9.2631,
+    lat: 44.8162,
+    lng: 20.4604,
     size: 20,
     color: "red",
     title: `Югославия`,
@@ -163,8 +163,8 @@ const gData = [
     url: `https://beta.rcb.ru/iugoslaviia`,
   },
   {
-    lat: 14.1816,
-    lng: 7.4213,
+    lat: 21.8445,
+    lng: 96.6395,
     size: 20,
     color: "red",
     title: `Бирма`,
