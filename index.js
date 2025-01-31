@@ -83,6 +83,7 @@ const camera = new THREE.PerspectiveCamera();
 camera.aspect = container.clientWidth / container.clientHeight;
 camera.updateProjectionMatrix();
 camera.position.z = 290;
+camera.position.set(32, 32, 290);
 
 const tbControls = new TrackballControls(camera, renderers[0].domElement);
 tbControls.noPan = true;
