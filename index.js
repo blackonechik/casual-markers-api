@@ -400,14 +400,6 @@ tbControls.zoomSpeed = 0.8;
 
 Globe.setPointOfView(camera.position, Globe.position);
 
-const russiaCoords = { lat: 61.5240, lng: 105.3188 };
-const russiaPos = Globe.getCoords(russiaCoords.lat, russiaCoords.lng, 180); // 180 - радиус глобуса
-
-camera.position.set(russiaPos.x, russiaPos.y, russiaPos.z + 50); // Немного отодвигаем камеру
-camera.lookAt(russiaPos.x, russiaPos.y, russiaPos.z);
-tbControls.target.set(russiaPos.x, russiaPos.y, russiaPos.z);
-
-
 // Добавляем обработчик событий для TrackballControls
 tbControls.addEventListener("change", () => {
   Globe.setPointOfView(camera.position, Globe.position);
