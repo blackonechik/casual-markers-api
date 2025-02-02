@@ -412,15 +412,14 @@ function latLonToCartesian(lat, lon, radius = 100) {
 }
 
 // Координаты Москвы
-const moscowCoords = latLonToCartesian(55.7558, 97.6173, 290);
+const moscowCoords = latLonToCartesian(55.7558, 7.6173, 290);
 
 // Устанавливаем камеру на Москву
 camera.position.set(moscowCoords.x, moscowCoords.y, moscowCoords.z);
 camera.lookAt(0, 0, 0);
+camera.up.set(0, 1, 0);
 Globe.setPointOfView(camera.position, Globe.position);
 tbControls.update();
-
-
 
 // Добавляем обработчик событий для TrackballControls
 tbControls.addEventListener("change", () => {
