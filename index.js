@@ -415,7 +415,7 @@ function latLonToCartesian(lat, lon, radius = 100) {
 const moscowCoords = latLonToCartesian(55.7558, 37.6173, 290);
 
 // Устанавливаем камеру
-camera.position.set(moscowCoords.x, moscowCoords.y, moscowCoords.z);
+camera.position.set(55.7558, 37.6173, 290);
 camera.lookAt(0, 0, 0);
 Globe.setPointOfView(camera.position, Globe.position);
 tbControls.update();
