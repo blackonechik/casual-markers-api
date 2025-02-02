@@ -400,6 +400,26 @@ tbControls.zoomSpeed = 0.8;
 
 Globe.setPointOfView(camera.position, Globe.position);
 
+function latLonToCartesian(lat, lon, radius = 100) {
+  const phi = (90 - lat) * (Math.PI / 180);
+  const theta = (lon + 180) * (Math.PI / 180);
+
+  return {
+    x: -radius * Math.sin(phi) * Math.cos(theta),
+    y: radius * Math.cos(phi),
+    z: radius * Math.sin(phi) * Math.sin(theta),
+  };
+}
+
+// Координаты Москвы
+const moscowCoords = latLonToCartesian(55.7558, 37.6173, 290);
+
+// Устанавливаем камеру на Москву
+camera.position.set(moscowCoords.x, moscowCoords.y, moscowCoords.z);
+camera.lookAt(0, 0, 0);
+Globe.setPointOfView(camera.position, Globe.position);
+tbControls.update();
+
 // Добавляем обработчик событий для TrackballControls
 tbControls.addEventListener("change", () => {
   Globe.setPointOfView(camera.position, Globe.position);
