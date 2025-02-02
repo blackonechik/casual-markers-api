@@ -16,7 +16,7 @@ const gData = [
     color: "red",
     title: `Амур и Колыма`,
     description: `4 - 15 августа 2024 года`,
-    url: `https://beta.rcb.ru/amur-i-kolyma`,
+    url: `https://casual.rcb.ru/amur-i-kolyma`,
   },
   {
     lat: 64.7337,
@@ -25,7 +25,7 @@ const gData = [
     color: "red",
     title: `Чукотка`,
     description: `14 - 25 августа 2023 года`,
-    url: `https://beta.rcb.ru/cukotka`,
+    url: `https://casual.rcb.ru/cukotka`,
   },
   {
     lat: 47.2221,
@@ -34,7 +34,7 @@ const gData = [
     color: "red",
     title: `Степь`,
     description: `22-27 апреля 2023 года`,
-    url: `https://beta.rcb.ru/step`,
+    url: `https://casual.rcb.ru/step`,
   },
   {
     lat: 66.5298,
@@ -43,7 +43,7 @@ const gData = [
     color: "red",
     title: `Ямал`,
     description: `22-25 февраля 2023 года`,
-    url: `https://beta.rcb.ru/iamal`,
+    url: `https://casual.rcb.ru/iamal`,
   },
   {
     lat: 55.7558,
@@ -52,7 +52,7 @@ const gData = [
     color: "red",
     title: `Глубинная Русь`,
     description: `С 13 августа 2021 года`,
-    url: `https://beta.rcb.ru/glubinnaia-rus`,
+    url: `https://casual.rcb.ru/glubinnaia-rus`,
   },
   {
     lat: 53.7211,
@@ -61,7 +61,7 @@ const gData = [
     color: "red",
     title: `Хакасия и Тыва`,
     description: `13 - 23 августа 2022 года`,
-    url: `https://beta.rcb.ru/xakasiia-i-tyva`,
+    url: `https://casual.rcb.ru/xakasiia-i-tyva`,
   },
   {
     lat: 68.6299,
@@ -70,7 +70,7 @@ const gData = [
     color: "red",
     title: `Кольский`,
     description: `3 – 7 ноября 2021 года`,
-    url: `https://beta.rcb.ru/kolskii`,
+    url: `https://casual.rcb.ru/kolskii`,
   },
   {
     lat: 67.9915,
@@ -79,7 +79,7 @@ const gData = [
     color: "red",
     title: `Гиперборея`,
     description: `28 мая - 5 июня 2021`,
-    url: `https://beta.rcb.ru/giperboreia`,
+    url: `https://casual.rcb.ru/giperboreia`,
   },
   {
     lat: 51.9578,
@@ -88,7 +88,7 @@ const gData = [
     color: "red",
     title: `Горный Алтай`,
     description: `5 – 11 сентября 2020 года`,
-    url: `https://beta.rcb.ru/gornyi-altai`,
+    url: `https://casual.rcb.ru/gornyi-altai`,
   },
   {
     lat: 35.6817,
@@ -97,7 +97,7 @@ const gData = [
     color: "red",
     title: `Япония`,
     description: `2 – 15 ноября 2019 года`,
-    url: `https://beta.rcb.ru/iaponiia`,
+    url: `https://casual.rcb.ru/iaponiia`,
   },
   {
     lat: 42.6978,
@@ -106,7 +106,7 @@ const gData = [
     color: "red",
     title: `Балканы`,
     description: `19 – 30 апреля 2019 года`,
-    url: `https://beta.rcb.ru/balkany`,
+    url: `https://casual.rcb.ru/balkany`,
   },
   {
     lat: -50.3386,
@@ -115,7 +115,7 @@ const gData = [
     color: "red",
     title: `Патагония`,
     description: `27 октября - 10 ноября 2018`,
-    url: `https://beta.rcb.ru/patagoniia`,
+    url: `https://casual.rcb.ru/patagoniia`,
   },
   {
     lat: 43.0246,
@@ -124,7 +124,7 @@ const gData = [
     color: "red",
     title: `Северный Кавказ`,
     description: `21 – 30 апреля 2018`,
-    url: `https://beta.rcb.ru/severnyi-kavkaz`,
+    url: `https://casual.rcb.ru/severnyi-kavkaz`,
   },
   {
     lat: 17.9708,
@@ -133,7 +133,7 @@ const gData = [
     color: "red",
     title: `Индокитай`,
     description: `29 октября – 11 ноября 2017`,
-    url: `https://beta.rcb.ru/indokitai`,
+    url: `https://casual.rcb.ru/indokitai`,
   },
   {
     lat: 53.3402,
@@ -142,7 +142,7 @@ const gData = [
     color: "red",
     title: `Шотландия-Ирландия`,
     description: `10 – 18 июня 2017`,
-    url: `https://beta.rcb.ru/sotlandiia-irlandiia`,
+    url: `https://casual.rcb.ru/sotlandiia-irlandiia`,
   },
   {
     lat: -12.0580,
@@ -151,7 +151,7 @@ const gData = [
     color: "red",
     title: `Перу-Боливия`,
     description: `29 октября - 12 ноября 2016`,
-    url: `https://beta.rcb.ru/peru-boliviia`,
+    url: `https://casual.rcb.ru/peru-boliviia`,
   },
   {
     lat: 44.8162,
@@ -160,7 +160,7 @@ const gData = [
     color: "red",
     title: `Югославия`,
     description: `16 - 25 апреля 2016`,
-    url: `https://beta.rcb.ru/iugoslaviia`,
+    url: `https://casual.rcb.ru/iugoslaviia`,
   },
   {
     lat: 21.8445,
@@ -169,7 +169,7 @@ const gData = [
     color: "red",
     title: `Бирма`,
     description: `30 октября - 9 ноября 2015`,
-    url: `https://beta.rcb.ru/birma`,
+    url: `https://casual.rcb.ru/birma`,
   },
   {
     lat: -18.9095,
@@ -178,7 +178,7 @@ const gData = [
     color: "red",
     title: `Мадагаскар`,
     description: `30 октября - 10 ноября 2014`,
-    url: `https://beta.rcb.ru/madagaskar`,
+    url: `https://casual.rcb.ru/madagaskar`,
   },
   {
     lat: 64.1471,
@@ -187,7 +187,7 @@ const gData = [
     color: "red",
     title: `Исландия`,
     description: `7-17 июня 2014`,
-    url: `https://beta.rcb.ru/islandiia`,
+    url: `https://casual.rcb.ru/islandiia`,
   },
   {
     lat: 42.4412,
@@ -196,7 +196,7 @@ const gData = [
     color: "red",
     title: `Два озера (Балхаш и Иссык-Куль)`,
     description: `17-27 апреля 2014`,
-    url: `https://beta.rcb.ru/twolakes`,
+    url: `https://casual.rcb.ru/twolakes`,
   },
   {
     lat: 56.9468,
@@ -205,7 +205,7 @@ const gData = [
     color: "red",
     title: `Прибалтика`,
     description: `15–24 августа 2013`,
-    url: `https://beta.rcb.ru/pribaltika`,
+    url: `https://casual.rcb.ru/pribaltika`,
   },
   {
     lat: 64.7358,
@@ -214,7 +214,7 @@ const gData = [
     color: "red",
     title: `Чукотка`,
     description: `21 - 30 июля 2013`,
-    url: `https://beta.rcb.ru/cukotka-2013`,
+    url: `https://casual.rcb.ru/cukotka-2013`,
   },
   {
     lat: 44.4363,
@@ -223,7 +223,7 @@ const gData = [
     color: "red",
     title: `Галиция – Трансильвания (Западная Украина – Румыния)`,
     description: `20 - 28 апреля 2013`,
-    url: `https://beta.rcb.ru/ukr-rom`,
+    url: `https://casual.rcb.ru/ukr-rom`,
   },
   {
     lat: -0.2192,
@@ -232,7 +232,7 @@ const gData = [
     color: "red",
     title: `Эквадор и Галапагосские острова`,
     description: `21 февраля – 6 марта 2013`,
-    url: `https://beta.rcb.ru/ekvador-i-galapagosskie-ostrova`,
+    url: `https://casual.rcb.ru/ekvador-i-galapagosskie-ostrova`,
   },
   {
     lat: 40.3729,
@@ -241,7 +241,7 @@ const gData = [
     color: "red",
     title: `Азербайджан`,
     description: `5-9 сентября 2012`,
-    url: `https://beta.rcb.ru/azerbaidzan`,
+    url: `https://casual.rcb.ru/azerbaidzan`,
   },
   {
     lat: 53.0242,
@@ -250,7 +250,7 @@ const gData = [
     color: "red",
     title: `Камчатка`,
     description: `3-12 августа 2012`,
-    url: `https://beta.rcb.ru/kamcatka`,
+    url: `https://casual.rcb.ru/kamcatka`,
   },
   {
     lat: 40.9993,
@@ -259,7 +259,7 @@ const gData = [
     color: "red",
     title: `Армения-Грузия`,
     description: `21-29 апреля 2012`,
-    url: `https://beta.rcb.ru/armeniia-gruziia`,
+    url: `https://casual.rcb.ru/armeniia-gruziia`,
   },
   {
     lat: 61.7850,
@@ -268,7 +268,7 @@ const gData = [
     color: "red",
     title: `Карелия`,
     description: `17-26 августа 2011`,
-    url: `https://beta.rcb.ru/kareliia`,
+    url: `https://casual.rcb.ru/kareliia`,
   },
   {
     lat: 41.3111,
@@ -277,7 +277,7 @@ const gData = [
     color: "red",
     title: `Узбекистан`,
     description: `20-30 апреля 2011`,
-    url: `https://beta.rcb.ru/uzbekistan`,
+    url: `https://casual.rcb.ru/uzbekistan`,
   },
   {
     lat: 62.0513,
@@ -286,7 +286,7 @@ const gData = [
     color: "red",
     title: `Енисей`,
     description: `14-22 августа 2010`,
-    url: `https://beta.rcb.ru/enisei`,
+    url: `https://casual.rcb.ru/enisei`,
   },
   {
     lat: 53.4053,
@@ -295,7 +295,7 @@ const gData = [
     color: "red",
     title: `Лед Байкала`,
     description: `18-24 февраля 2010`,
-    url: `https://beta.rcb.ru/led-baikal`,
+    url: `https://casual.rcb.ru/led-baikal`,
   },
   {
     lat: 56.1290,
@@ -304,7 +304,7 @@ const gData = [
     color: "red",
     title: `Малое золотое кольцо России`,
     description: `9-12 июля 2009`,
-    url: `https://beta.rcb.ru/maloe-zolotoe-kolco-rossii`,
+    url: `https://casual.rcb.ru/maloe-zolotoe-kolco-rossii`,
   },
   {
     lat: 51.8348,
@@ -313,7 +313,7 @@ const gData = [
     color: "red",
     title: `Бурятия-Монголия`,
     description: `12-20 июля 2008`,
-    url: `https://beta.rcb.ru/buriatiia-mongoliia`,
+    url: `https://casual.rcb.ru/buriatiia-mongoliia`,
   },
   {
     lat: 60.7577,
@@ -322,7 +322,7 @@ const gData = [
     color: "red",
     title: `Великий Устюг`,
     description: `6-10 февраля 2008`,
-    url: `https://beta.rcb.ru/velikii-ustiug`,
+    url: `https://casual.rcb.ru/velikii-ustiug`,
   },
   {
     lat: 61.7850,
@@ -331,7 +331,7 @@ const gData = [
     color: "red",
     title: `Карелия`,
     description: `4-7 июля 2007`,
-    url: `https://beta.rcb.ru/kareliia-2007`,
+    url: `https://casual.rcb.ru/kareliia-2007`,
   },
 ];
 
