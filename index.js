@@ -412,7 +412,7 @@ function latLonToCartesian(lat, lon, radius = 100) {
 }
 
 // Координаты Москвы
-const moscowCoords = latLonToCartesian(55.7558, 37.6173, 290);
+const moscowCoords = latLonToCartesian(55.7558, 97.6173, 290);
 
 // Устанавливаем камеру на Москву
 camera.position.set(moscowCoords.x, moscowCoords.y, moscowCoords.z);
