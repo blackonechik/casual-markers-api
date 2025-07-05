@@ -10,6 +10,15 @@ const container = document.getElementById("globeViz");
 
 const gData = [
   {
+    lat: 38.5358,
+    lng:  68.7791,
+    size: 20,
+    color: "red",
+    title: `Таджикистан`,
+    description: `12-15 июня 2025 года`,
+    url: `https://casual.rcb.ru/tadzikistan`,
+  },
+  {
     lat: 50.2906,
     lng: 127.5272,
     size: 20,
